@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="#" />
+        <script>
+            let html = document.documentElement,
+                mWidth = html.getBoundingClientRect().width
+            html.style.fontSize = mWidth / 7.5 + 'px'
+        </script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="./index.tsx"></script>
+    </body>
+</html>

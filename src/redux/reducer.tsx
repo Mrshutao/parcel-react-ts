@@ -4,10 +4,24 @@ import { combineReducers } from 'redux'
 const LOGIN = 'login'
 const LOGOUT = 'logout'
 
-export function authReducer(state = { isLogin: false, userInfo: { userName: '' } }, action) {
+const localAuthState = sessionStorage.getItem('auth')
+
+const initialState = localAuthState
+    ? JSON.parse(localAuthState)
+    : {
+          isLogin: false,
+          userInfo: { userName: '' },
+      }
+
+export function authReducer(state = initialState, action) {
     switch (action.type) {
         case LOGIN:
-            return { isLogin: true, userInfo: action.userInfo }
+            const newState = {
+                isLogin: true,
+                userInfo: action.userInfo,
+            }
+            sessionStorage.setItem('auth', JSON.stringify(newState))
+            return newState
         case LOGOUT:
             return { isLogin: false, userInfo: null }
         default:

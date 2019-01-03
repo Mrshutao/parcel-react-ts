@@ -13,7 +13,6 @@ class Login extends React.Component<RouteComponentProps<{}> & { loginState?: Log
     }
 
     toSub() {
-        //this.props.history.push('/test')
         this.props['actions'].login({ userName: '舒涛' })
         this.props.history.push('/main')
     }
